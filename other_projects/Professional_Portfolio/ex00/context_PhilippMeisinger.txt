@@ -1,0 +1,7 @@
+Target company: Exnaton (https://www.linkedin.com/company/exnaton/)
+Tasks: Development of Backend services for their billing platform.
+Required Skills: Probably C++, Python for data analysis, SQL, PostgreSQL, PHP, Git, Jira, Agile Working methods etc.
+Required experiences: Some experiences in the software Development field.
+
+I am targeting a junior/intern position at Exnaton in their backend services department. The Company provides a billing platform for decentralized
+energy production and purchase.
