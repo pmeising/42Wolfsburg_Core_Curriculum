@@ -24,32 +24,32 @@ Level 2:
     
    
 Level 3:
-    - *Minishell*: 
+- *Minishell*: 
                            "This project is about creating a simple shell. Yes, your own little bash.
 You will learn a lot about processes and file descriptors."
-    - *Philosopher*: 
+- *Philosopher*: 
                            "In this project, you will learn the basics of threading a process. You will see how to create threads and you will discover mutexes."
     
 Level 4:
-    - *C++*: 
+- *C++*: 
                            "The goal of these modules is to introduce you to Object-Oriented Programming. This will be the starting point of your C++ journey. Many languages are recommended to learn OOP. We decided to choose C++ since it’s derived from your old friend C. Because this is a complex language, and in order to keep things simple, your code will
 comply with the C++98 standard."
-    - *cub3D*: 
+- *cub3D*: 
                            "This project is inspired by the world-famous Wolfenstein 3D game, which was the first FPS ever. It will enable you to explore ray-casting. Your goal will be to
 make a dynamic view inside a maze, in which you’ll have to find your way."
-    - *net_practise*: 
+- *net_practise*: 
                            "This project is a general practical exercise to let you discover networking." Basics of networking - that's it.
 
 
 Level 5:
-    - *C++9*: 
-                           ""
-    - *Inception*: 
-                           ""
-    - *ft_irc*: 
-                           ""
+- *C++9*: 
+                           "none so far"
+- *Inception*: 
+                           "This project aims to broaden your knowledge of system administration by using Docker. You will virtualize several Docker images, creating them in your new personal virtual machine."
+- *ft_irc*: 
+                           "This project is about creating your own IRC server. You will use an actual IRC client to connect to your server and test it. Internet is ruled by solid standards protocols that allow connected computers to interact with each other. It’s always a good thing to know."
     
    
 Level 6:
-    - *Transcendence*: 
-                           ""
+- *Transcendence*: 
+                           "No more C! No more C++! This project is about doing something you’ve never done before. Remind yourself the beginning of your journey in computer science. Look at you now. Time to shine!"
