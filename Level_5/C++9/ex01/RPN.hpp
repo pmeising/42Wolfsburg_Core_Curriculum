@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:46:09 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/06 22:22:59 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:35:51 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,10 @@ class RPN
 		std::stack<int>		_A;
 		std::stack<char>	_B;
 		std::string			_input;
-		int					_result;
 		RPN(const RPN& obj);
 		RPN& 	operator=(const RPN& rhs);
 		int		inputCheck(const std::string input);
-		void	operate();
+		int		operate();
 		void	printResult();
 	public:
 		RPN();

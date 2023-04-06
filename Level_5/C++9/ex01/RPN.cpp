@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:51:16 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/06 22:22:19 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:36:16 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ RPN::~RPN()
 RPN::RPN(const RPN&	obj)
 {
 	this->_input = obj._input;
-	this->_result = obj._result;
 	this->_A = obj._A;
 	this->_B = obj._B;
 }
@@ -31,7 +30,6 @@ RPN::RPN(const RPN&	obj)
 RPN& RPN::operator=(const RPN& rhs)
 {
 	this->_input = rhs._input;
-	this->_result = rhs._result;
 	this->_A = rhs._A;
 	this->_B = rhs._B;
 	return (*this);
@@ -63,16 +61,50 @@ int	RPN::calculate(const std::string input)
 		else
 			this->_B.push(this->_input[i]);
 		if (!this->_A.empty() && !this->_B.empty())
-			this->operate();
+			if (this->operate() == -1)
+				return;
 		i++;
 	}
-	
 	this->printResult();
+}
+
+int	RPN::operate()
+{
+	if (_A.size() < 2)
+	{
+		std::cout << "Error\n";
+		return (-1);
+	}
+	int	second_op = this->_A.top();
+	this->_A.pop();
+	int	first_op = this->_A.top();
+	this->_A.pop();
+	if (this->_B.top() == '+')
+	{
+		this->_A.push(first_op + second_op);
+		this->_B.pop();
+	}
+	else if (this->_B.top() == '-')
+	{
+		this->_A.push(first_op - second_op);
+		this->_B.pop();
+	}
+	else if (this->_B.top() == '*')
+	{
+		this->_A.push(first_op * second_op);
+		this->_B.pop();
+	}
+	else if (this->_B.top() == '/')
+	{
+		this->_A.push(first_op / second_op);
+		this->_B.pop();
+	}
+	return (0);
 }
 
 void	RPN::printResult()
 {
-	std::cout << this->_result << std::endl;
+	std::cout << this->_A.top() << std::endl;
 }
 
 int	RPN::inputCheck(const std::string input)
