@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:51:16 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/06 21:33:31 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:22:19 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,42 @@ RPN& RPN::operator=(const RPN& rhs)
 	return (*this);
 }
 
+
+/*
+*	Input: std::string input string.
+*	Returns: result of RPN calculation as 'int'.
+*
+*	1. checks, whether input string is valid.
+*	2. copies input string into _input.
+*	3. iterates through _input and pushes numbers to _A,
+*	operators to _B, skips spaces.
+*	4. 
+*/
 int	RPN::calculate(const std::string input)
 {
 	if (this->inputCheck(input) == -1)
 		return;
+	this->_input = input;
+	int i = 0;
+	while (this->_input[i])
+	{
+		if (this->_input[i] >= '0' && this->_input[i] <= '9')
+			this->_A.push(int(this->_input[i]));
+		else if (this->_input[i] == ' ')
+			i++;
+		else
+			this->_B.push(this->_input[i]);
+		if (!this->_A.empty() && !this->_B.empty())
+			this->operate();
+		i++;
+	}
+	
+	this->printResult();
+}
+
+void	RPN::printResult()
+{
+	std::cout << this->_result << std::endl;
 }
 
 int	RPN::inputCheck(const std::string input)
