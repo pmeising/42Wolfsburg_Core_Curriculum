@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:51:16 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/06 22:43:58 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:49:09 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ RPN& RPN::operator=(const RPN& rhs)
 int	RPN::calculate(const std::string input)
 {
 	if (this->inputCheck(input) == -1)
-		return;
+		return (0);
 	this->_input = input;
 	int i = 0;
 	while (this->_input[i])
@@ -63,10 +63,11 @@ int	RPN::calculate(const std::string input)
 			this->_B.push(this->_input[i]);
 		if (!this->_A.empty() && !this->_B.empty())
 			if (this->operate() == -1)
-				return;
+				return (0);
 		i++;
 	}
 	this->printResult();
+	return (this->_A.top());
 }
 
 
@@ -129,12 +130,14 @@ int	RPN::inputCheck(const std::string input)
 {
 	int	size = input.size();
 	for (int i = 0; i < size; i++)
-		if ((input[i] >= '0' && input[i] <= '9') || input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/')
+		if ((input[i] >= '0' && input[i] <= '9') || (input[i] == '+') || (input[i] == '-') || (input[i] == '*') || (input[i] == '/'))
+		{
 			if (i < (size -1) && input[i + 1] != ' ')
 			{
 				std::cout << "Error\n";
 				return (-1);
 			}
+		}
 		else if (input[i] != ' ')
 		{
 			std::cout << "Error\n";
