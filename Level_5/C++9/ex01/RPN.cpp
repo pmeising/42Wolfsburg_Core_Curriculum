@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:51:16 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/06 22:49:09 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:56:18 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	RPN::operate()
 
 void	RPN::printResult()
 {
-	std::cout << this->_A.top() << std::endl;
+	std::cout << (this->_A.top() - 48) << std::endl;
 }
 
 

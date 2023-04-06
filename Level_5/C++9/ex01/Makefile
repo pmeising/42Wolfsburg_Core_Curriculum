@@ -1,6 +1,6 @@
 NAME		:=	RPN
 
-SRC 		:=	main.cpp RPN.cpp main.cpp \
+SRC 		:=	main.cpp RPN.cpp \
 				
 OBJS 		:= 	${SRC:.cpp=.o}
 
