@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:51:16 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/06 22:36:16 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:43:58 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ RPN& RPN::operator=(const RPN& rhs)
 	return (*this);
 }
 
+// #################### MEMBER FUNCTIONS ############################
 
 /*
 *	Input: std::string input string.
@@ -44,7 +45,7 @@ RPN& RPN::operator=(const RPN& rhs)
 *	2. copies input string into _input.
 *	3. iterates through _input and pushes numbers to _A,
 *	operators to _B, skips spaces.
-*	4. 
+*	4. If operate returns 0, keep iterating and print result.
 */
 int	RPN::calculate(const std::string input)
 {
@@ -68,6 +69,16 @@ int	RPN::calculate(const std::string input)
 	this->printResult();
 }
 
+
+/*
+*	Input: non
+*	Return: -1 for error, 0 for success
+*	1. checks if operation is viable.
+*	2. Assignes both operands to the corresponding
+*	variable and removes values from Stack (i.e. pop()).
+*	3. Calculates result and adds it to stack.
+*	4. Removes operator from stack _B.
+*/
 int	RPN::operate()
 {
 	if (_A.size() < 2)
@@ -107,6 +118,13 @@ void	RPN::printResult()
 	std::cout << this->_A.top() << std::endl;
 }
 
+
+/*
+*	Input: string to check.
+*	Return:	-1 for error, 0 for success.
+*	Is intended to filter out the following erroneous inputs:
+*	"", "9 1 8 -", "-", "2 2 - 1", "2 9 * 2 (2) - -" and "5 1 20 4 - + +".
+*/
 int	RPN::inputCheck(const std::string input)
 {
 	int	size = input.size();
@@ -151,4 +169,5 @@ int	RPN::inputCheck(const std::string input)
 		std::cout << "Error\n";
 		return (-1);
 	}
+	return (0);
 }
