@@ -1,6 +1,10 @@
 NAME		:=	RPN
 
 SRC 		:=	main.cpp RPN.cpp \
+
+TESTING		:= tests.cpp RPN.cpp \
+
+T_OBJS		:=	${TESTING:.cpp=.o}
 				
 OBJS 		:= 	${SRC:.cpp=.o}
 
@@ -20,8 +24,11 @@ ${NAME}:		${OBJS}
 
 all:			${NAME}
 
+testing:		${T_OBJS}
+				${CPP} ${FLAGS} ${T_OBJS} -o ${NAME}
+
 clean:
-				${RM} ${OBJS}
+				${RM} ${OBJS} ${T_OBJS}
 
 fclean:			clean
 				${RM} ${NAME}

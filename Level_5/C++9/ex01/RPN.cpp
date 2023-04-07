@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:51:16 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/07 09:17:08 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/07 09:25:23 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,15 +55,10 @@ int	RPN::calculate(const std::string input)
 	int i = 0;
 	while (this->_input[i])
 	{
-		// std::cout << "Input[" << i << "]: " << this->_input[i] << "\n";
 		if (this->_input[i] >= '0' && this->_input[i] <= '9')
-		{
-			std::cout << ((int)this->_input[i] - 48) << "\n";
 			this->_A.push(((int)this->_input[i] - 48));
-		}
 		else if (this->_input[i] != ' ')
 			this->_B.push(this->_input[i]);
-		// std::cout << "Top A: " << this->_A.top() << "\n";
 		if (!this->_A.empty() && !this->_B.empty())
 			if (this->operate() == -1)
 				return (0);
