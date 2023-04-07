@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:51:16 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/07 09:25:23 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/07 10:34:00 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ RPN& RPN::operator=(const RPN& rhs)
 */
 int	RPN::calculate(const std::string input)
 {
+	// std::cout << input << std::endl;
 	if (this->inputCheck(input) == -1)
 		return (0);
 	this->_input = input;
@@ -63,6 +64,11 @@ int	RPN::calculate(const std::string input)
 			if (this->operate() == -1)
 				return (0);
 		i++;
+	}
+	if (!this->_B.empty())
+	{
+		std::cout << "Error\n";
+		return (0);
 	}
 	this->printResult();
 	return (this->_A.top());
