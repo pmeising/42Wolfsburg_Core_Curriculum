@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:51:16 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/06 22:56:18 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/07 09:17:08 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,15 @@ int	RPN::calculate(const std::string input)
 	int i = 0;
 	while (this->_input[i])
 	{
+		// std::cout << "Input[" << i << "]: " << this->_input[i] << "\n";
 		if (this->_input[i] >= '0' && this->_input[i] <= '9')
-			this->_A.push(int(this->_input[i]));
-		else if (this->_input[i] == ' ')
-			i++;
-		else
+		{
+			std::cout << ((int)this->_input[i] - 48) << "\n";
+			this->_A.push(((int)this->_input[i] - 48));
+		}
+		else if (this->_input[i] != ' ')
 			this->_B.push(this->_input[i]);
+		// std::cout << "Top A: " << this->_A.top() << "\n";
 		if (!this->_A.empty() && !this->_B.empty())
 			if (this->operate() == -1)
 				return (0);
@@ -87,9 +90,9 @@ int	RPN::operate()
 		std::cout << "Error\n";
 		return (-1);
 	}
-	int	second_op = this->_A.top();
+	int	second_op = (int)this->_A.top();
 	this->_A.pop();
-	int	first_op = this->_A.top();
+	int	first_op = (int)this->_A.top();
 	this->_A.pop();
 	if (this->_B.top() == '+')
 	{
@@ -116,7 +119,7 @@ int	RPN::operate()
 
 void	RPN::printResult()
 {
-	std::cout << (this->_A.top() - 48) << std::endl;
+	std::cout << (this->_A.top()) << std::endl;
 }
 
 
