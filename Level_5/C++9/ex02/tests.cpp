@@ -1,7 +1,9 @@
-#include "RPN.hpp"
+#include "PmergeMe.hpp"
 
-int main()
+int	main()
 {
+	PmergeMe	obj;
+
 	std::cout << B_BLUE << "--------------- TEST ONE: ERROR HANDLING ----------------------\n\n" << DEFAULT;
 	RPN	rpn;
 	std::cout << "Empty input. Expected Error." << std::endl;
