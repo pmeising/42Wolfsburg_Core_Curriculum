@@ -158,7 +158,10 @@ int	main(int argc, char **argv)
 		PmergeMe		obj;
 										// MISSING THE INPUT CHECK - Monine
 		obj.storeCollection(argc, argv); // stores values in both list and vector
-		obj.sort(obj.getList(), obj.getList().begin(), obj.getList().end());
+		std::cout << "Before: ";
+		obj.printList();
+		obj.sort(obj.getList().begin(), obj.getList().end());
+		std::cout << "After: ";
 		obj.printList();
 	}
 	return (0);

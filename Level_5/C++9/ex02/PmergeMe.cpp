@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:40:47 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/08 23:31:25 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:59:14 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	PmergeMe::addNumberToList(int setNumberValue)
 
 void	PmergeMe::storeCollection(int argc, char **argv)
 {
-	for (int i = 0, value = 1; i < argc; i++)
+	for (int i = 1, value = 1; i < argc; i++)
 	{
 		value = atoi(argv[i]);
 		this->addNumberToVector(value);
@@ -96,23 +96,47 @@ void	PmergeMe::printVector()
 
 void	PmergeMe::printList()
 {
-	std::list<int>::iterator	it_begin;
-	std::list<int>::iterator	it_end;
+	std::list<int>::iterator	it_begin = this->_inputList.begin();
+	std::list<int>::iterator	it_end = this->_inputList.end();
 
-	std::cout << "std::list\t: ";
 	for (std::list<int>::iterator it = it_begin; it != it_end; it++)
-		std::cout << *it << " - ";
+		std::cout << *it << " ";
 	std::cout << "\n";
 }
 
 // ################################# SORTING ##########################
 
-void	PmergeMe::sort(std::list<int> list, std::list<int>::iterator first, std::list<int>::iterator last)
+void	PmergeMe::sort(std::list<int>::iterator first, std::list<int>::iterator last)
 {
-	unsigned int	n = 1;
+	unsigned int	n = 0;
 	for (std::list<int>::iterator it = first; it != last; it++)
 		n++;
-	std::cout << "This is n: " << n << std::endl;
-	// std::cout << *list.begin();
-	list.push_back(3);
+	if (n > 2) // 2 is the size of the pairs
+	{
+		std::list<int>::iterator middle = first;
+		for (int m = 0; m <= (n / 2); m++)
+			middle++;
+		sort(first, middle);
+		sort(middle++, last);
+		merge(first, middle, last);
+	}
+	insertionSort(first, last);
+}
+
+void	PmergeMe::insertionSort(std::list<int>::iterator first, std::list<int>::iterator middle)
+{
+	for (std::list<int>::iterator it = first; it != middle; it++)
+	{
+		it++;
+		int	tempVal = *it;
+		std::list<int>::iterator	it_2 = it;
+		it--;
+		while (it_2 != first && *it > tempVal)
+		{
+			*it_2 = *it;
+			it_2--;
+			it--;
+		}
+		*it_2 = tempVal;
+	}
 }
