@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:40:47 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/08 21:40:53 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/08 22:59:43 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,12 @@ void	PmergeMe::addNumberToList(int setNumberValue)
 
 void	PmergeMe::storeCollection(int argc, char **argv)
 {
-	int	i = 1;
-	int	value = 0;
-
-	while (i < argc)
+	for (int i, value = 1; i < argc; i++)
 	{
 		value = atoi(argv[i]);
-		addNumberToVector(value);
-		addNumberToList(value);
-		i++;
-	}	
+		this->addNumberToVector(value);
+		this->addNumberToList(value);
+	}
 }
 
 

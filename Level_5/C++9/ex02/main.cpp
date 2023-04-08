@@ -100,7 +100,9 @@ int	main(int argc, char **argv)
 {
 	if (argc > 1)
 	{
-
+		PmergeMe	obj;
+										// MISSING THE INPUT CHECK - Monine
+		obj.storeCollection(argc, argv); // stores values in both list and vector
 	}
 	return (0);
 }

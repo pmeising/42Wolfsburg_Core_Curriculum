@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:33:19 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/08 22:51:32 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/08 22:57:30 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define B_YELLOW "\033[1;33m"
 # define B_GREEN "\033[1;32m"
 # define B_PINK "\033[1;35m"
+
+# define MAX_INT 2147483647
+# define MIN_INT -2147483648
 
 class	PmergeMe
 {
