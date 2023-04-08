@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 18:33:19 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/08 23:02:29 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:14:55 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,15 @@ class	PmergeMe
 		PmergeMe& operator=(const PmergeMe& src);
 		~PmergeMe();
 		
-		std::vector<int>&	getInputVector();
-		std::list<int>&		getInputList();
+		std::vector<int>&	getVector();
+		std::list<int>&		getList();
 		void				addNumberToVector(int setNumberValue);
 		void				addNumberToList(int setNumberValue);
 		void				storeCollection(int argc,char **argv);
-		void				printInputVector();
-		void				printInputList();
+		void				printVector();
+		void				printList();
+		void				sort(std::vector<int> vec, int first, int last);
+		void				sort(std::list<int> lst, int first, int last);
 
 	private:
 		std::vector<int>	_inputVector;

@@ -1,60 +1,3 @@
-#include "PmergeMe.hpp"
-
-//======== FUNCTIONS ============================================================================
-int	check_for_not_a_digit(char *s)
-{
-	if (*s && (*s == '-' || *s == '+'))
-		s++;
-	while (*s)
-	{
-		if (isdigit(*s) != 1)
-			return (1);
-		s++;
-	}
-	return (0);
-}
-
-int	out_of_range_number(char *s)
-{
-	long	c;
-
-	c = strtol(s, NULL, 10);
-	if (c < MIN_INT || c > MAX_INT || strlen(s) > 11)
-		return (1);
-	return (0);
-}
-
-int	check_input_method_2(int n, char **args)
-{
-	int	i;
-	int	err_1;
-	int	err;
-
-	i = 1;
-	err = 0;
-	while (i < n)
-	{
-		err_1 = check_for_not_a_digit(args[i]) + out_of_range_number(args[i]);
-		err = err + err_1;
-		i++;
-	}
-	return (err);
-}
-
-int	check_input(int argc, char **argv)
-{
-	int		err;
-
-	err = 0;
-	if (argc == 1)
-		;
-	if (argc > 1)
-		err = check_input_method_2(argc, argv);
-	return (err);
-}
-
-// ############################## SORTING ####################################
-
 const int K = 2;
 
 void insertionSort(int A[], int first, int middle)
@@ -70,11 +13,11 @@ void insertionSort(int A[], int first, int middle)
         }
         A[j] = tempVal;
     }
-    std::vector<int> temp(A + first, A + middle + 1);
-    for (size_t i = 0; i < temp.size(); i++) {
-        std::cout << temp[i] << " ";
-    }
-    std::cout << std::endl;
+    // std::vector<int> temp(A + first, A + middle + 1);
+    // for (size_t i = 0; i < temp.size(); i++) {
+    //     std::cout << temp[i] << " ";
+    // }
+    // std::cout << std::endl;
 }
 
 // A = {5, 4, 3, 2, 1}
@@ -131,36 +74,4 @@ void sort(int A[], int first, int last)
     }
     else
         insertionSort(A, first, last);
-}
-
-int main()
-{
-	PmergeMe	obj;
-    // int A[] = { 10, 2, 11, 5, 12, 1, 6, 7, 3, 13, 8, 4, 9 , 13, 2 };
-	int A[] = { 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    int n = sizeof(A) / sizeof(A[0]);
-    // sort(A, 0, n - 1);
-	// sort(A, 1, n - 1);
-	sort(A, 0, n - 1);
-    for (int i = 0; i < n; i++)
-    {
-        std::cout << A[i] << " ";
-    }
-    std::cout << std::endl;
-    return 0;
-}
-
-
-int	main(int argc, char **argv)
-{
-	if (argc > 1)
-	{
-		PmergeMe		obj;
-										// MISSING THE INPUT CHECK - Monine
-		obj.storeCollection(argc, argv); // stores values in both list and vector
-		unsigned int	n = obj.getList().size();
-		obj.sort(obj.getList(), 0, n - 1);
-		obj.printList();
-	}
-	return (0);
 }

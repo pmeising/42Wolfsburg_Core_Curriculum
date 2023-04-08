@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:40:47 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/08 23:02:53 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:16:18 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ PmergeMe::~PmergeMe()
 
 
 //======== GETTER / SETTER ======================================================================
-std::vector<int>&	PmergeMe::getInputVector()
+std::vector<int>&	PmergeMe::getVector()
 {
 	return this->_inputVector;
 }
 
-std::list<int>&		PmergeMe::getInputList()
+std::list<int>&		PmergeMe::getList()
 {
 	return this->_inputList;
 }
@@ -82,27 +82,26 @@ void	PmergeMe::storeCollection(int argc, char **argv)
 }
 
 
-void	PmergeMe::printInputVector()
+void	PmergeMe::printVector()
 {
 	std::vector<int>::iterator it;
 
 	std::cout << "std::vector\t: ";
-	for (it = getInputVector().begin(); it != getInputVector().end(); it++)
+	for (it = getVector().begin(); it != getVector().end(); it++)
 	{
 		std::cout << *it << " - ";
 	}
 	std::cout << "\n";
 }
 
-void	PmergeMe::printInputList()
+void	PmergeMe::printList()
 {
-	std::list<int>::iterator it;
+	std::list<int>::iterator	it_begin;
+	std::list<int>::iterator	it_end;
 
 	std::cout << "std::list\t: ";
-	for (it = getInputList().begin(); it != getInputList().end(); it++)
-	{
-		std::cout << *it << " - ";
-	}
+	for (it_begin; it_begin != it_end; it_begin++)
+		std::cout << *it_begin << " - ";
 	std::cout << "\n";
 }
 
