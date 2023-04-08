@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:40:47 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/08 23:16:18 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/08 23:31:25 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	PmergeMe::addNumberToList(int setNumberValue)
 
 void	PmergeMe::storeCollection(int argc, char **argv)
 {
-	for (int i, value = 1; i < argc; i++)
+	for (int i = 0, value = 1; i < argc; i++)
 	{
 		value = atoi(argv[i]);
 		this->addNumberToVector(value);
@@ -100,8 +100,19 @@ void	PmergeMe::printList()
 	std::list<int>::iterator	it_end;
 
 	std::cout << "std::list\t: ";
-	for (it_begin; it_begin != it_end; it_begin++)
-		std::cout << *it_begin << " - ";
+	for (std::list<int>::iterator it = it_begin; it != it_end; it++)
+		std::cout << *it << " - ";
 	std::cout << "\n";
 }
 
+// ################################# SORTING ##########################
+
+void	PmergeMe::sort(std::list<int> list, std::list<int>::iterator first, std::list<int>::iterator last)
+{
+	unsigned int	n = 1;
+	for (std::list<int>::iterator it = first; it != last; it++)
+		n++;
+	std::cout << "This is n: " << n << std::endl;
+	// std::cout << *list.begin();
+	list.push_back(3);
+}
