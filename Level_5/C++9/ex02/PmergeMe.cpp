@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 21:40:47 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/08 23:59:14 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/09 00:04:44 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	PmergeMe::sort(std::list<int>::iterator first, std::list<int>::iterator las
 	if (n > 2) // 2 is the size of the pairs
 	{
 		std::list<int>::iterator middle = first;
-		for (int m = 0; m <= (n / 2); m++)
+		for (unsigned int m = 0; m <= (n / 2); m++)
 			middle++;
 		sort(first, middle);
 		sort(middle++, last);
@@ -139,4 +139,15 @@ void	PmergeMe::insertionSort(std::list<int>::iterator first, std::list<int>::ite
 		}
 		*it_2 = tempVal;
 	}
+}
+
+void	PmergeMe::merge(std::list<int>::iterator first, std::list<int>::iterator middle, std::list<int>::iterator last)
+{
+	unsigned int	n1 = 0;
+	unsigned int	n2 = 0;
+	for (std::list<int>::iterator it = first; it != middle; it++)
+		n1++;
+	for (std::list<int>::iterator it =  middle; it != last; it++)
+		n2++;
+	std::cout << "n1/n2: " << n1 << ", " << n2 << "\n";
 }
