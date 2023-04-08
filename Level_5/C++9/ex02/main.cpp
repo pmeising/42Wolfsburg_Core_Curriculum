@@ -78,18 +78,29 @@ void sort(int A[], int first, int last)
         insertionSort(A, first, last);
 }
 
-int main()
+// int main()
+// {
+// 	PmergeMe	obj;
+//     // int A[] = { 10, 2, 11, 5, 12, 1, 6, 7, 3, 13, 8, 4, 9 , 13, 2 };
+// 	int A[] = { 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+//     int n = sizeof(A) / sizeof(A[0]);
+//     // sort(A, 0, n - 1);
+// 	// sort(A, 1, n - 1);
+// 	sort(A, 0, n - 1);
+//     for (int i = 0; i < n; i++)
+//     {
+//         std::cout << A[i] << " ";
+//     }
+//     std::cout << std::endl;
+//     return 0;
+// }
+
+
+int	main(int argc, char **argv)
 {
-    // int A[] = { 10, 2, 11, 5, 12, 1, 6, 7, 3, 13, 8, 4, 9 , 13, 2 };
-	int A[] = { 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
-    int n = sizeof(A) / sizeof(A[0]);
-    // sort(A, 0, n - 1);
-	// sort(A, 1, n - 1);
-	sort(A, 0, n - 1);
-    for (int i = 0; i < n; i++)
-    {
-        std::cout << A[i] << " ";
-    }
-    std::cout << std::endl;
-    return 0;
+	if (argc > 1)
+	{
+
+	}
+	return (0);
 }
