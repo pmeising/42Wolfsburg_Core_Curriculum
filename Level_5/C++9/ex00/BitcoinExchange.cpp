@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 21:16:46 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/09 22:15:22 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:31:54 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void	BitcoinExchange::printBtcValue(char* infilePath)
 			continue;
 		}
 		std::string date = line.substr(0, pos);
+		// Check for invalid date please!! 
 		std::string btcCoinsNumber = line.substr(pos + delimiter.length());
 
 		float btcCoinsNumberInt = static_cast<float>(atof(btcCoinsNumber.c_str()));
