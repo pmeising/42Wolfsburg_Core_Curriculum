@@ -2,7 +2,7 @@ NAME		:=	PmergeMe
 
 SRC 		:=	main.cpp PmergeMe.cpp \
 
-TESTING		:= tests.cpp PmergeMe.cpp \
+TESTING		:=	tests.cpp PmergeMe.cpp \
 
 T_OBJS		:=	${TESTING:.cpp=.o}
 				
