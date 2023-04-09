@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 20:51:16 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/07 10:34:00 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:58:55 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ int	RPN::inputCheck(const std::string input)
 {
 	int	size = input.size();
 	for (int i = 0; i < size; i++)
+	{
 		if ((input[i] >= '0' && input[i] <= '9') || (input[i] == '+') || (input[i] == '-') || (input[i] == '*') || (input[i] == '/'))
 		{
 			if (i < (size -1) && input[i + 1] != ' ')
@@ -147,12 +148,8 @@ int	RPN::inputCheck(const std::string input)
 			std::cout << "Error\n";
 			return (-1);
 		}
-	if (input.empty())
-	{
-		std::cout << "Error\n";
-		return (-1);
 	}
-	else if (input.find("(") != std::string::npos || input.find(")") != std::string::npos) // If bracket is found
+	if (input.empty())
 	{
 		std::cout << "Error\n";
 		return (-1);
