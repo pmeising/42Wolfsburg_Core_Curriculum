@@ -5,149 +5,144 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/08 21:40:47 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/09 00:04:44 by pmeising         ###   ########.fr       */
+/*   Created: 2023/04/09 19:42:21 by pmeising          #+#    #+#             */
+/*   Updated: 2023/04/09 20:49:37 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-//======== CONSTRUCTORS =========================================================================
-PmergeMe::PmergeMe() :
-	_inputVector(), _inputList()
+PmergeMe::PmergeMe() : _inputVector(), _inputDeque()
 {
-	// std::cout << BLU << "Default constructor called from PmergeMe" << D << "\n";
 }
 
 PmergeMe::PmergeMe(const PmergeMe& src) :
-	_inputVector(src._inputVector), _inputList(src._inputList)
+	_inputVector(src._inputVector), _inputDeque(src._inputDeque)
 {
-	// std::cout << BLU << "Copy constructor called from PmergeMe" << D << "\n";
 }
 
-
-//======== OVERLOAD OPERATORS ===================================================================
 PmergeMe& PmergeMe::operator=(const PmergeMe& src)
 {
-	// std::cout << BLU << "Copy assignment operator called from PmergeMe" << D << "\n";
 	if (this != & src) // check for self assignment
 	{
 		this->_inputVector.clear();
 		this->_inputVector.insert(this->_inputVector.begin(), src._inputVector.begin(), src._inputVector.end());
-		this->_inputList.clear();
-		this->_inputList.insert(this->_inputList.begin(), src._inputList.begin(), src._inputList.end());
+		this->_inputDeque.clear();
+		this->_inputDeque.insert(this->_inputDeque.begin(), src._inputDeque.begin(), src._inputDeque.end());
 	}
 	return (*this);
 }
 
-
-//======== DESTRUCTOR ===========================================================================
 PmergeMe::~PmergeMe()
 {
-	// std::cout << CY << "Destructor called from PmergeMe" << D << "\n";
 }
 
-
-//======== GETTER / SETTER ======================================================================
+//#################### GETTERS / SETTERS ########################################
 std::vector<int>&	PmergeMe::getVector()
 {
 	return this->_inputVector;
 }
 
-std::list<int>&		PmergeMe::getList()
+std::deque<int>&	PmergeMe::getDeque()
 {
-	return this->_inputList;
+	return this->_inputDeque;
 }
 
-
-//======== MEMBER FUNCTIONS =====================================================================
+//##################### MEMBER FUNCTIONS ############################################
 void	PmergeMe::addNumberToVector(int setNumberValue)
 {
 	this->_inputVector.push_back(setNumberValue);
 }
 
-void	PmergeMe::addNumberToList(int setNumberValue)
+void	PmergeMe::addNumberToDeque(int setNumberValue)
 {
-	this->_inputList.push_back(setNumberValue);
+	this->_inputDeque.push_back(setNumberValue);
 }
 
 void	PmergeMe::storeCollection(int argc, char **argv)
 {
-	for (int i = 1, value = 1; i < argc; i++)
+	for (int i = 1; i < argc; i++)
 	{
-		value = atoi(argv[i]);
-		this->addNumberToVector(value);
-		this->addNumberToList(value);
+		addNumberToVector(atoi(argv[i]));
+		addNumberToDeque(atoi(argv[i]));
 	}
 }
-
 
 void	PmergeMe::printVector()
 {
-	std::vector<int>::iterator it;
-
-	std::cout << "std::vector\t: ";
-	for (it = getVector().begin(); it != getVector().end(); it++)
-	{
-		std::cout << *it << " - ";
-	}
-	std::cout << "\n";
-}
-
-void	PmergeMe::printList()
-{
-	std::list<int>::iterator	it_begin = this->_inputList.begin();
-	std::list<int>::iterator	it_end = this->_inputList.end();
-
-	for (std::list<int>::iterator it = it_begin; it != it_end; it++)
+	for (std::vector<int>::iterator it = getVector().begin(); it != getVector().end(); it++)
 		std::cout << *it << " ";
 	std::cout << "\n";
 }
 
-// ################################# SORTING ##########################
-
-void	PmergeMe::sort(std::list<int>::iterator first, std::list<int>::iterator last)
+void	PmergeMe::printDeque()
 {
-	unsigned int	n = 0;
-	for (std::list<int>::iterator it = first; it != last; it++)
-		n++;
-	if (n > 2) // 2 is the size of the pairs
-	{
-		std::list<int>::iterator middle = first;
-		for (unsigned int m = 0; m <= (n / 2); m++)
-			middle++;
-		sort(first, middle);
-		sort(middle++, last);
-		merge(first, middle, last);
-	}
-	insertionSort(first, last);
+	for (long unsigned int i = 0; i < this->getDeque().size(); i++)
+		std::cout << this->getDeque()[i] << " ";
+	std::cout << "\n";
 }
 
-void	PmergeMe::insertionSort(std::list<int>::iterator first, std::list<int>::iterator middle)
+bool	PmergeMe::checkDuplicate()
 {
-	for (std::list<int>::iterator it = first; it != middle; it++)
-	{
-		it++;
-		int	tempVal = *it;
-		std::list<int>::iterator	it_2 = it;
-		it--;
-		while (it_2 != first && *it > tempVal)
-		{
-			*it_2 = *it;
-			it_2--;
-			it--;
-		}
-		*it_2 = tempVal;
-	}
+    std::set<int> set(getVector().begin(), getVector().end()); // copy elements of vec into a set
+
+    if (set.size() == getVector().size())
+		return (false);
+	return (true);
 }
 
-void	PmergeMe::merge(std::list<int>::iterator first, std::list<int>::iterator middle, std::list<int>::iterator last)
+// ################################### FUNCTIONS #################################
+
+int	checkIsDigit(char *s)
 {
-	unsigned int	n1 = 0;
-	unsigned int	n2 = 0;
-	for (std::list<int>::iterator it = first; it != middle; it++)
-		n1++;
-	for (std::list<int>::iterator it =  middle; it != last; it++)
-		n2++;
-	std::cout << "n1/n2: " << n1 << ", " << n2 << "\n";
+	int i = 0;
+
+	if (s[i] && (s[i] == '-' || s[i] == '+'))
+		i++;
+	while (s[i])
+	{
+		if (isdigit(s[i]) != 1)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	checkOutOfRange(char *s)
+{
+	long	c;
+
+	c = strtol(s, NULL, 10);
+	if (c < MIN_INT || c > MAX_INT || strlen(s) > 11)
+		return (1);
+	return (0);
+}
+
+int	checkIsDigitAndOutOfRange(int n, char **args)
+{
+	int	i;
+	int	err_1;
+	int	err;
+
+	i = 1;
+	err = 0;
+	while (i < n)
+	{
+		err_1 = checkIsDigit(args[i]) + checkOutOfRange(args[i]);
+		err = err + err_1;
+		i++;
+	}
+	return (err);
+}
+
+int	checkInput(int argc, char **argv)
+{
+	int		err;
+
+	err = 0;
+	if (argc == 1)
+		return (0);
+	if (argc > 1)
+		err = checkIsDigitAndOutOfRange(argc, argv);
+	return (err);
 }
