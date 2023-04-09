@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 21:16:46 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/09 21:34:00 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:15:22 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange() :
-	_btcExchangeRate(std::map<std::string, float>()), _input(std::map<std::string, float>())
+	_btcExchangeRate(std::map<std::string, float>())
 {
 }
 
@@ -32,16 +32,6 @@ BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& src)
 
 BitcoinExchange::~BitcoinExchange()
 {
-}
-
-void	BitcoinExchange::setInput(const std::pair<std::string, float>& setInput)
-{
-	 this->_input.insert(setInput);
-}
-
-std::map<std::string, float>	BitcoinExchange::getInputMap()
-{
-	return _input;
 }
 
 void	BitcoinExchange::setExchangeRate(const std::pair<std::string, float>& setExchangeRate)
@@ -120,7 +110,6 @@ float	BitcoinExchange::findBtcRate(std::string date)
 void	BitcoinExchange::printBtcValue(char* infilePath)
 {
 	std::ifstream infile(infilePath);
-	// std::ifstream infile()
 	checkFileCanBeOpened(infile);
 	std::string	line;
 	std::getline(infile, line); // Skip the first line

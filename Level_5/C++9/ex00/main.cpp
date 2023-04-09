@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 21:16:35 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/09 21:37:35 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/09 22:17:55 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ int main(int argc, char **argv)
 		return (0);
 	}
 	BitcoinExchange	btcXchange;
-	char	*data = (char *)"data.csv";
-	btcXchange.storeDatabase(data);
-	std::map<std::string, float> input = btcXchange.getInputMap();
+	btcXchange.storeDatabase((char *)"data.csv"); // "string" in C++ is considered a const std::string, need explicit conversion / type casting
 	btcXchange.printBtcValue(argv[1]);
 	return (0);
 }
