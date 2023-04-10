@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 21:16:46 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 09:11:34 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/10 09:14:55 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,25 @@ std::map<std::string, float>	BitcoinExchange::getExchangeRateMap()
 	return _btcExchangeRate;
 }
 
+/*
+*	Check if file can be opened.
+*/
 void	BitcoinExchange::checkFileCanBeOpened(std::ifstream& file)
 {
 	if (!file.is_open())
 		std::cout << B_RED << "Error: file could not be opened" << DEFAULT << "\n";
 }
 
+/*
+*	Goes through csv. file and stores the database in a map.
+*	ll. 75 increases plus 1 in order to skip the ",".
+*/
 void	BitcoinExchange::storeDatabase(char* infilePath)
 {
 	std::ifstream	infile(infilePath);
 	checkFileCanBeOpened(infile);
 	std::string	line;
-	std::getline(infile, line); // Skip the first line
+	std::getline(infile, line);
 	while(getline(infile, line))
 	{
 		size_t	pos = line.find(",");
@@ -65,7 +72,7 @@ void	BitcoinExchange::storeDatabase(char* infilePath)
 			continue;
 		}
 		std::string	date = line.substr(0, pos);
-		std::string	numericValue = line.substr(pos + 1); // +1 is for length of comma delimiter.
+		std::string	numericValue = line.substr(pos + 1);
 		float btcNumericValueInt = static_cast<float>(atof(numericValue.c_str()));
 		this->_btcExchangeRate.insert(std::pair<std::string, float > (date, btcNumericValueInt));
 	}
@@ -178,7 +185,9 @@ int	BitcoinExchange::checkDateValidity(std::string date)
 	return (0);
 }
 
-//======== FUNCTIONS ============================================================================
+/*
+*	Simply prints the values for the exchange rate using first-> and second->.
+*/
 void	printExchangeRate(const std::pair<std::string, float>& exchangeRate)
 {
 	std::cout << exchangeRate.first << " , " << exchangeRate.second << "\n";
