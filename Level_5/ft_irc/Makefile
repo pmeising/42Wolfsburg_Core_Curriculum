@@ -1,6 +1,6 @@
-NAME		:=	RPN
+NAME		:=	ircserv
 
-SRC 		:=	main.cpp RPN.cpp \
+SRC 		:=	main.cpp \
 
 TESTING		:=	tests.cpp RPN.cpp \
 

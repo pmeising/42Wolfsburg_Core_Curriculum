@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 21:16:41 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 08:55:13 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/10 15:33:21 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define B_GREEN "\033[1;32m"
 # define B_PINK "\033[1;35m"
 
-# define MAX_INT 2147483647
-# define MIN_INT -2147483648
+# define MAX_INT 1000
+# define MIN_INT 0
 
 class	BitcoinExchange
 {

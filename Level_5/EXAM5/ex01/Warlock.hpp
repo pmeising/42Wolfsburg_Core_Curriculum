@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <list>
+# include <map>
 # include "ASpell.hpp"
 
 class ASpell;
@@ -23,14 +24,14 @@ class ASpell;
 class Warlock
 {
 	private:
-		ASpell			*_spells[10];
-		unsigned int	_i;
-		std::string		_name;
-		std::string		_title;
+		std::map<std::string, ASpell *>	_Spells;
+		std::string						_name;
+		std::string						_title;
 		Warlock(); // default constr.
 		Warlock(std::string name); // param constr.
 		Warlock(const Warlock& obj); // copy constr.
 		Warlock&		operator=(const Warlock& rhs); // assignment operator overload
+	
 	public:
 		Warlock(std::string name, std::string title); // param constr.
 		~Warlock(); // destr.
