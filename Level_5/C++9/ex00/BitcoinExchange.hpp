@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 21:16:41 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 08:49:27 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/10 08:55:13 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class	BitcoinExchange
 	private:
 		std::map<std::string, float>	_btcExchangeRate;
 		void							checkFileCanBeOpened(std::ifstream& file);
-		void							checkDateValidity(std::string date);
+		int								checkDateValidity(std::string date);
 		float							findBtcRate(std::string date);
 		std::map<std::string, float>	getExchangeRateMap();
 		void    						setExchangeRate(const std::pair<std::string, float>& exchangeRate);

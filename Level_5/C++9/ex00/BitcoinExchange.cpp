@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 21:16:46 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 08:49:41 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/10 09:11:34 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,14 @@ void	BitcoinExchange::storeDatabase(char* infilePath)
 	infile.close();
 }
 
+/*
+*	Input: date in format "YYYY-MM-DD"
+*	Return: bitcoin rate as float.
+*	iterates through map and finds date.
+*	If date non-existent, falls back onto the prior date.
+*	->first and ->second refer to the first and second key of the map values.
+*	Since the map stores a key-value pair, it can retrieve these values using the -> first ->second operators.
+*/
 float	BitcoinExchange::findBtcRate(std::string date)
 {
 	float		btcCoinRate = 0;
@@ -107,12 +115,20 @@ float	BitcoinExchange::findBtcRate(std::string date)
 	return (btcCoinRate);
 }
 
+
+/*
+*	This is where the operations take place, each line is being 
+*	read in and then input checked.
+*	First line is skipped as it is the header of the file.
+*	If input is correct, the value is calculated and printed, if not
+*	Error is thrown.
+*/
 void	BitcoinExchange::printBtcValue(char* infilePath)
 {
 	std::ifstream infile(infilePath);
 	checkFileCanBeOpened(infile);
 	std::string	line;
-	std::getline(infile, line); // Skip the first line
+	std::getline(infile, line);
 	while(getline(infile, line))
 	{
 		const std::string& delimiter = " | ";
@@ -123,7 +139,11 @@ void	BitcoinExchange::printBtcValue(char* infilePath)
 			continue;
 		}
 		std::string date = line.substr(0, pos);
-		checkDateValidity(date);
+		if (checkDateValidity(date) == -1)
+		{
+			std::cout << B_RED << "Error: date invalid => " << line << DEFAULT << "\n";
+			continue;
+		}
 		std::string btcCoinsNumber = line.substr(pos + delimiter.length());
 
 		float btcCoinsNumberInt = static_cast<float>(atof(btcCoinsNumber.c_str()));
@@ -144,6 +164,19 @@ void	BitcoinExchange::printBtcValue(char* infilePath)
 	infile.close();
 }
 
+/*
+*	Input: Date in format "YYYY-MM-DD"
+*	Return: Invalid date -> -1. Valid date -> 0.
+*	Splits date into year, month and day and sets limits (2023, 12 and 31).
+*/
+int	BitcoinExchange::checkDateValidity(std::string date)
+{
+	std::string	month = date.substr(5);
+	std::string	day = month.substr(3);
+	if (date > "2023" || month > "12" || day > "31")
+		return (-1);
+	return (0);
+}
 
 //======== FUNCTIONS ============================================================================
 void	printExchangeRate(const std::pair<std::string, float>& exchangeRate)
