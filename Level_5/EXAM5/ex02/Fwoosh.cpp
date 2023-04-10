@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 20:14:29 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 18:29:53 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/10 21:27:02 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ Fwoosh::~Fwoosh()
 
 ASpell* Fwoosh::clone()
 {
-	Fwoosh	*obj = new Fwoosh;
-	obj = this;
-	return (obj);
+	return (new Fwoosh);
 }
