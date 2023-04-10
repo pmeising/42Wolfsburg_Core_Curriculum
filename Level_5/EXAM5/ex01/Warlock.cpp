@@ -26,7 +26,7 @@ Warlock::Warlock(std::string name, std::string Title) : _name(name), _title(Titl
 
 Warlock::~Warlock()
 {
-	// std::cout << this->_name << ": My job here is done!\n";
+	std::cout << this->_name << ": My job here is done!\n";
 }
 
 // ##### Copy Constructor ######
@@ -95,5 +95,5 @@ void	Warlock::launchSpell(std::string spell, ATarget& target)
 {
 	std::map<std::string, ASpell*>::iterator	it = this->_Spells.find(spell);
 	if (it != this->_Spells.end())
-		
+		it->second->launch(target);
 }

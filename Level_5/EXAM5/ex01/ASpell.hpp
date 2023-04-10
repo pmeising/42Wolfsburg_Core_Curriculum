@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/04 18:28:14 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/05 20:07:41 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/10 18:30:16 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class ASpell
 		ASpell(std::string	name, std::string effects);
 		ASpell(const ASpell& obj); // copy constr.
 		ASpell&		operator=(const ASpell& rhs); // assignment operator overload
-		~ASpell	();
+		virtual ~ASpell	();
 		std::string	getName() const;
 		std::string	getEffects() const;
 		virtual ASpell*	clone() = 0;
