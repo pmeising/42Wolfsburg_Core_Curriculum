@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 20:24:03 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 18:29:39 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/10 21:28:32 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,7 @@ Dummy::~Dummy()
 {
 }
 
-// Dummy::Dummy(const Dummy& obj)
-// {
-// 	this->_type = obj.getType();
-// }
-
-// Dummy&	Dummy::operator=(const Dummy& rhs)
-// {
-// 	this->_type = rhs.getType();
-// 	return (*this);
-// }
-
 ATarget* Dummy::clone()
 {
-	Dummy	*obj = new Dummy;
-	obj = this;
-	return (obj);
+	return (new Dummy());
 }

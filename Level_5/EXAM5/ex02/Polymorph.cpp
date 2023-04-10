@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:45:51 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 18:46:13 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/10 21:29:26 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,5 @@ Polymorph::~Polymorph()
 
 ASpell* Polymorph::clone()
 {
-	Polymorph	*obj = new Polymorph;
-	obj = this;
-	return (obj);
+	return (new Polymorph());
 }

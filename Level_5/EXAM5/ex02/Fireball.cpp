@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:44:57 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 18:45:33 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/10 21:28:51 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,5 @@ Fireball::~Fireball()
 
 ASpell* Fireball::clone()
 {
-	Fireball	*obj = new Fireball;
-	obj = this;
-	return (obj);
+	return (new Fireball());
 }
