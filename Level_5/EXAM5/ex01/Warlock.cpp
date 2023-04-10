@@ -27,12 +27,18 @@ Warlock::Warlock(std::string name, std::string Title) : _name(name), _title(Titl
 Warlock::~Warlock()
 {
 	std::cout << this->_name << ": My job here is done!\n";
+	std::map<std::string, ASpell*>::iterator	it = this->_Spells.begin();
+	std::map<std::string, ASpell*>::iterator	it_2 = this->_Spells.end();
+	while (it != it_2)
+	{
+		delete it->second;
+		it++;
+	}
 }
 
 // ##### Copy Constructor ######
 Warlock::Warlock(const Warlock& obj)
 {
-	// std::cout << this->_name << ": It's me copy-constructor.\n";
 	this->_name = obj.getName();
 	this->_title = obj.getTitle();
 	if (obj._Spells.size() != 0)
