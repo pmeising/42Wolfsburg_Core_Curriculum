@@ -14,31 +14,31 @@
 
 int main(void)
 {
-	{
-		Warlock richard("Richard", "foo");
-		richard.setTitle("Hello, I'm Richard the Warlock!");
-		BrickWall model1;
-		BrickWall test1(model1);
+	// {
+	// 	Warlock richard("Richard", "foo");
+	// 	richard.setTitle("Hello, I'm Richard the Warlock!");
+	// 	BrickWall model1;
+	// 	BrickWall test1(model1);
 		
-		Polymorph* polymorph = new Polymorph();
-		TargetGenerator tarGen;
+	// 	Polymorph* polymorph = new Polymorph();
+	// 	TargetGenerator tarGen;
 
-		tarGen.learnTargetType(&test1);
-		richard.learnSpell(polymorph);
+	// 	tarGen.learnTargetType(&test1);
+	// 	richard.learnSpell(polymorph);
 
-		Fireball* fireball = new Fireball();
+	// 	Fireball* fireball = new Fireball();
 
-		richard.learnSpell(fireball);
+	// 	richard.learnSpell(fireball);
 
-		ATarget* wall = tarGen.createTarget("Inconspicuous Red-brick Wall");
+	// 	ATarget* wall = tarGen.createTarget("Inconspicuous Red-brick Wall");
 
-		richard.introduce();
-		richard.launchSpell("Polymorph", *wall);
-		richard.launchSpell("Fireball", *wall);
-		delete wall;
-		delete fireball;
-		delete polymorph;
-	}
+	// 	richard.introduce();
+	// 	richard.launchSpell("Polymorph", *wall);
+	// 	richard.launchSpell("Fireball", *wall);
+	// 	delete wall;
+	// 	delete fireball;
+	// 	delete polymorph;
+	// }
 	{
 		std::cout << "--- Constructors:\n";
 		Warlock richard("Aang", "The Avatar");
@@ -47,6 +47,9 @@ int main(void)
 		Polymorph *water = new Polymorph();
 		Fireball *fire = new Fireball();
 		Fwoosh *air = new Fwoosh();
+
+		richard.learnSpell(water);
+		richard.forgetSpell("Polymorph");
 		richard.learnSpell(water);
 		richard.learnSpell(fire);
 		richard.forgetSpell("Fwoosh");
@@ -54,6 +57,8 @@ int main(void)
 		richard.forgetSpell("Fwoosh");
 		richard.forgetSpell("Fwoosh");
 		richard.learnSpell(air);
+		richard.learnSpell(water);
+		richard.learnSpell(fire);
 
 		std::cout << "--- Targets:\n";
 		Dummy *hay = new Dummy();
@@ -65,31 +70,36 @@ int main(void)
 
 		std::cout << "--- Spells (all):\n";
 
-		richard.launchSpell("Fwoosh", *tarGen.createTarget("Target Practice Dummy"));
-		richard.launchSpell("Fireball", *tarGen.createTarget("Inconspicuous Red-brick Wall"));
-		richard.launchSpell("Polymorph", *tarGen.createTarget("Target Practice Dummy"));
+		ATarget	*target = tarGen.createTarget("Target Practice Dummy");
+		richard.launchSpell("Fwoosh", *target);
+		richard.launchSpell("Fireball", *target);
+		richard.launchSpell("Polymorph", *target);
 
 		std::cout << "--- Forgotten \"Fwoosh\":\n";
-
 		richard.forgetSpell("Fwoosh");
-		richard.launchSpell("Fwoosh", *tarGen.createTarget("Target Practice Dummy"));
-		richard.launchSpell("Fireball", *tarGen.createTarget("Inconspicuous Red-brick Wall"));
-		richard.launchSpell("Polymorph", *tarGen.createTarget("Target Practice Dummy"));
+		richard.launchSpell("Fwoosh", *target);
+		richard.launchSpell("Fireball", *target);
+		richard.launchSpell("Polymorph", *target);
 
 		std::cout << "--- Spells (all):\n";
 
 		richard.learnSpell(air);
-		richard.launchSpell("Fwoosh", *tarGen.createTarget("Target Practice Dummy"));
-		richard.launchSpell("Fireball", *tarGen.createTarget("Inconspicuous Red-brick Wall"));
-		richard.launchSpell("Polymorph", *tarGen.createTarget("Target Practice Dummy"));
+		richard.launchSpell("Fwoosh", *target);
+		richard.launchSpell("Fireball", *target);
+		richard.launchSpell("Polymorph", *target);
 
 		std::cout << "--- Non-existant spell:\n";
 
-		richard.launchSpell("ACID", *tarGen.createTarget("Inconspicuous Red-brick Wall"));
+		richard.launchSpell("ACID", *target);
 		richard.forgetSpell("ACID");
-		richard.launchSpell("ACID", *tarGen.createTarget("Target Practice Dummy"));
-
-		std::cout << "--- Destructors:\n";
+		richard.launchSpell("ACID", *target);
+		delete water;
+		delete fire;
+		delete air;
+		delete hay;
+		delete earth;
+		delete target;
+		// std::cout << "--- Destructors:\n";
 	}
 	return (0);
 }
