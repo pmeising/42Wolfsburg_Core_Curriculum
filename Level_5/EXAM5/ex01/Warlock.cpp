@@ -14,12 +14,9 @@
 
 Warlock::Warlock()
 {
-	// this->_name = "...";
-	// this->_title = "noone";
-	// std::cout << this->_name << ": This looks like another boring day.\n";
 }
 
-Warlock::Warlock(std::string name, std::string Title) : _name(name), _title(Title)
+Warlock::Warlock(const std::string& name, const std::string& Title) : _name(name), _title(Title)
 {
 	std::cout << this->_name << ": This looks like another boring day.\n";
 }
@@ -97,7 +94,7 @@ void	Warlock::forgetSpell(std::string spell)
 	}
 }
 
-void	Warlock::launchSpell(std::string spell, ATarget& target)
+void	Warlock::launchSpell(std::string spell, ATarget const &target)
 {
 	std::map<std::string, ASpell*>::iterator	it = this->_Spells.find(spell);
 	if (it != this->_Spells.end())

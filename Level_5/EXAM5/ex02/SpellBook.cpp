@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 20:39:40 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 20:50:51 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:47:45 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,19 @@ SpellBook::~SpellBook()
 }
 
 // ##### Copy Constructor ######
-SpellBook::SpellBook(const SpellBook& obj)
-{
-	if (obj._Spells.size() != 0)
-		this->_Spells = obj._Spells;
-}
+// SpellBook::SpellBook(const SpellBook& obj)
+// {
+// 	if (obj._Spells.size() != 0)
+// 		this->_Spells = obj._Spells;
+// }
 
-// #### Assignment operator overload #####
-SpellBook&	SpellBook::operator=(const SpellBook& rhs)
-{
-	if (rhs._Spells.size() != 0)
-		this->_Spells = rhs._Spells;
-	return (*this);
-}
+// // #### Assignment operator overload #####
+// SpellBook&	SpellBook::operator=(const SpellBook& rhs)
+// {
+// 	if (rhs._Spells.size() != 0)
+// 		this->_Spells = rhs._Spells;
+// 	return (*this);
+// }
 
 // ############# Functions ###############
 void	SpellBook::learnSpell(ASpell* spell)

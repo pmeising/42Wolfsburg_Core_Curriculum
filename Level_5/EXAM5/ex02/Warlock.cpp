@@ -76,5 +76,8 @@ void	Warlock::launchSpell(std::string spell, ATarget& target)
 {
 	ASpell	*retrievedSpell = this->_SpellBook.createSpell(spell);
 	if (retrievedSpell)
+	{
 		retrievedSpell->launch(target);
+		delete retrievedSpell;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:52:39 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 20:57:38 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:20:16 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <iostream>
 # include <string>
 # include <map>
-# include <ASpell.hpp>
+# include "ASpell.hpp"
 
 class ASpell;
 

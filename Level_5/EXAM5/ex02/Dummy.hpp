@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 20:25:05 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/05 20:27:44 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:43:07 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 # include <string>
 # include "ATarget.hpp"
 
-class Target;
+class ATarget;
 
 class Dummy : public ATarget
 {
 	public:
 		Dummy();
 		~Dummy();
-		ATarget* clone();
+		Dummy* clone(void) const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 18:49:01 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/10 21:29:07 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:44:35 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ BrickWall::~BrickWall()
 {
 }
 
-ATarget* BrickWall::clone()
+ATarget* BrickWall::clone(void) const
 {
 	return (new BrickWall());
 }

@@ -27,14 +27,14 @@ class Warlock
 		std::map<std::string, ASpell *>	_Spells;
 		std::string						_name;
 		std::string						_title;
-		Warlock(); // default constr.
-		Warlock(std::string name); // param constr.
-		Warlock(const Warlock& obj); // copy constr.
-		Warlock&		operator=(const Warlock& rhs); // assignment operator overload
+		Warlock();
+		Warlock(std::string name);
+		Warlock(const Warlock& obj);
+		Warlock&		operator=(const Warlock& rhs);
 	
 	public:
-		Warlock(std::string name, std::string title); // param constr.
-		~Warlock(); // destr.
+		Warlock(const std::string& name, const std::string& title);
+		~Warlock();
 
 		const std::string&		getName(void) const;
 		const std::string&		getTitle(void) const;
@@ -42,7 +42,7 @@ class Warlock
 		void	introduce() const;
 		void	learnSpell(ASpell* spell);
 		void	forgetSpell(std::string	spell);
-		void	launchSpell(std::string spell, ATarget& target);
+		void	launchSpell(std::string name, ATarget const &target);
 };
 
 #endif
