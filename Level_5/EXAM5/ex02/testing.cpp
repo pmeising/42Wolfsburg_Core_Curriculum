@@ -87,6 +87,7 @@ int main(void)
 		richard.launchSpell("Fwoosh", *target);
 		richard.launchSpell("Fireball", *target);
 		richard.launchSpell("Polymorph", *target);
+		// richard.launchSpell("Polymorph", *tarGen.createTarget("Target Practice Dummy"));
 
 		std::cout << "--- Non-existant spell:\n";
 

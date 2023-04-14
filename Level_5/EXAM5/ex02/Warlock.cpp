@@ -72,7 +72,7 @@ void	Warlock::forgetSpell(std::string spell)
 	this->_SpellBook.forgetSpell(spell);
 }
 
-void	Warlock::launchSpell(std::string spell, ATarget& target)
+void	Warlock::launchSpell(std::string spell, ATarget const & target)
 {
 	ASpell	*retrievedSpell = this->_SpellBook.createSpell(spell);
 	if (retrievedSpell)
