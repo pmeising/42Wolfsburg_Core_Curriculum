@@ -6,7 +6,7 @@
 /*   By: pmeising <pmeising@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/12 12:21:30 by pmeising          #+#    #+#             */
-/*   Updated: 2023/04/12 12:21:34 by pmeising         ###   ########.fr       */
+/*   Updated: 2023/04/17 21:15:29 by pmeising         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	TargetGenerator::forgetTargetType(std::string const & targetName)
 	}
 }
 
-ATarget *	TargetGenerator::createTarget(std::string const & targetName)
+ATarget*	TargetGenerator::createTarget(std::string const & targetName)
 {
 	std::map<std::string, ATarget *>::iterator it = this->targets.find(targetName);
 
