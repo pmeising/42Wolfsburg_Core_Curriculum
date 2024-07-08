@@ -1,0 +1,61 @@
+version: "3.7"
+services:
+  # Database container
+  db:
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_DB=pong
+    image: postgres:13
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    env_file:
+      - ./docker.env
+    networks:
+      - app-network
+    restart: always
+
+  # Backend container
+  apis:
+    container_name: apis
+    build:
+      context: ./apis
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./apis:/usr/src/app
+    env_file:
+      - ./docker.env
+    networks:
+      - app-network
+    depends_on:
+      - db
+
+  # Frontend container
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/src/client
+    env_file:
+      - ./docker.env
+    networks:
+      - app-network
+    depends_on:
+      - apis
+
+volumes:
+  postgres-data:
+  apis:
+  frontend:
+
+networks:
+  app-network:
